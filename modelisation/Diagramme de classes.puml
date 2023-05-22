@@ -1,0 +1,35 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Formation {
+    -intitule : string
+    -nbPlaces : int
+    -dateDebut : DateTime
+    -dateFin : DateTime
+    +inscrireSalarie(salarie : Salarie)
+    +noterSalarie(salarie : Salarie,
+    note : int, appreciation : string)
+}
+
+class Inscription {
+    -note : int
+    -appreciation : string
+}
+
+class Salarie {
+    -prenom : string
+    -nom : string
+}
+
+class Entreprise {
+    -nom : string
+    -rueEntreprise : string
+    -CPEntreprise : string
+    -villeEntreprise : string
+}
+
+Inscription "0..*  " <-- "1..1 " Formation
+Inscription "0..*" --> "1..1   " Salarie
+Salarie "0..* " --> "1..1  " Entreprise : > travaille
+
+@enduml
